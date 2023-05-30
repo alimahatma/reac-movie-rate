@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import MovieList from './components/movie-list'
+import MovieDetails from './components/movie-details';
 
 function App() {
 
   const [movies, setMovie]= useState([]);
+  const [selectedMovie, setSelectedMovie] = useState (null);
 
 
   // code for list and Query RestAPI from Server 
@@ -23,6 +25,10 @@ function App() {
 	.catch( error => console.log(error))
   }, [])
 
+  const movieClicked = movie => {
+    setSelectedMovie(movie);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -30,9 +36,9 @@ function App() {
       </header>
 
         <div className='layout'>
-          <MovieList movies={movies}/>
+          <MovieList movies={movies} movieClicked={movieClicked} />
           
-          <div>Movie detail</div>
+          <MovieDetails movie={selectedMovie} />
         </div>
 
     </div>
