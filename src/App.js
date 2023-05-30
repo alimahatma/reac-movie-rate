@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
+import MovieList from './components/movie-list'
 
 function App() {
 
@@ -29,11 +30,8 @@ function App() {
       </header>
 
         <div className='layout'>
-          <div>
-            { movies.map( (movie) => {
-              return <h3>{movie.title} : {movie.description}</h3>
-            })}
-          </div>
+          <MovieList movies={movies}/>
+          
           <div>Movie detail</div>
         </div>
 
